@@ -1,0 +1,455 @@
+body{
+    overflow-x: hidden;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 2px solid green;
+    overflow: hidden;
+}
+
+.logo {
+    display: flex;
+    height: 60px;
+    width: 30px;
+}
+
+.logo img {
+    object-fit: cover;
+}
+
+h1 {
+    margin-left: -150px;
+    color: green;
+}
+
+.page-buttons {
+    margin-top: 23px;
+    width: 10%;
+    height: 80%;
+    border-radius: 3px;
+    border: none;
+    background-color: transparent;
+    font-size: 1vw;
+}
+
+.page-buttons:hover {
+    background-color: #FFD700;
+    transition: ease-in-out 3ms;
+}
+
+#contact-button {
+    margin-right: 0px;
+}
+
+#about-button {
+    margin-right: -200px;
+}
+
+#product-button {
+    margin-right: -200px;
+}
+
+#service-button {
+    margin-right: -200px;
+}
+
+#home-button {
+    margin-right: -200px;
+    background-color: green;
+    color: white;
+}
+
+/* Carousel Styles */
+
+.carousel {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+    margin-top: 0;
+}
+
+.img-container {
+    min-width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text {
+    color: #f2f2f2;
+    text-shadow: 5px 5px 10px black;
+    font-weight: bolder;
+    font-size: 7vw;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 4vw;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+}
+
+.prev {
+    left: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: green;
+}
+
+.intro {
+    position: relative;
+    width: 98%;
+    margin-top:15%;
+    border-radius: 30px;
+    height: 450px;
+    border: 5px solid  #50C878;
+}
+
+.intro h1{
+    position: relative;
+    left:15%;
+    font-size: 100px;
+}
+
+.intro p{
+    position: relative;
+    font-size: 30px;
+    top:-5%;
+    left:3%;
+    width:56%;
+    line-height: 50px;
+    
+}
+/* Sun image */
+.sun {
+    position: absolute;
+    right: -8%; /* Start partially hidden */
+    top: -15%;
+    z-index: 0;
+    height: 150px;
+    opacity: 0; /* Initially hidden */
+    animation: peekSun 2s ease-out forwards;
+    animation-delay: 2s; /* Delays the sun's animation until the house finishes sliding */
+}
+
+.sun img {
+    object-fit: contain;
+    width: 100%; /* Adjust to your needs */
+}
+
+/* House image */
+.house {
+    position: absolute;
+    right: -50%; /* Start off-screen to the right */
+    top: 30%;
+    z-index: 1;
+    height: 250px;
+    animation: slideInHouse 2s ease-out forwards;
+}
+
+.house img {
+    object-fit: cover;
+    width: 100%; /* Adjust to your needs */
+}
+
+/* Keyframes for house sliding in */
+@keyframes slideInHouse {
+    0% {
+        right: -50%; /* Start off-screen */
+    }
+    100% {
+        right: -3%; /* Final position */
+    }
+}
+
+/* Keyframes for sun peeking out */
+@keyframes peekSun {
+    0% {
+        top: 0%; /* Start above the container */
+        opacity: 0;
+    }
+    50% {
+        top: -10%; /* Move halfway */
+        opacity: 1;
+    }
+    100% {
+        top: -18%; /* Final position */
+        opacity: 1;
+    }
+}
+
+.adv{
+    display: flex;
+    height: 230px;
+    margin-top: 15%;
+    width: 100%;
+    background-color: #50C878;
+    padding: 5px 5px 5px 5px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 25px;
+    overflow: hidden;
+}
+
+.adv img{
+    height: 120px;
+    flex-shrink: 0;
+    animation: conveyorBelt 14s linear infinite;
+}
+
+@keyframes conveyorBelt {
+    0% {
+        transform: translateX(500%); /* Start off-screen to the right */
+    }
+    25% {
+        transform: translateX(0); /* Move to the starting position */
+    }
+    75% {
+        transform: translateX(0); /* Pause in place */
+    }
+    100% {
+        transform: translateX(-500%); /* Move off-screen to the left */
+    }
+}
+
+
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 1030px){
+        .intro h1{
+            font-size: 70px;
+            left:18%;
+        }
+
+        .intro p{
+            font-size: 28px;
+            width:35%;
+            line-height: 35px;
+        }
+}
+
+@media screen and (max-width: 770px) {
+    .page-buttons {
+        font-size: 1vw;
+        height: 70%;
+        margin-top: 20px;
+        width:8%;
+    }
+
+    #home-button {
+        margin-right: -150px;
+    }
+
+    #service-button{
+        margin-right: -150px;
+    }
+
+    #product-button{
+        margin-right: -150px;
+    }
+
+    #about-button{
+        margin-right: -150px;
+    }
+
+    h1 {
+        font-size: 3vw;
+        margin-left: -120px;
+    }
+
+    .carousel {
+        height: 500px;
+    }
+
+    .text {
+        font-size: 6vw;
+        left: 10%;
+        top: 12%;
+    }
+
+    .prev, .next {
+        font-size: 6vw;
+        top:45%;
+    }
+    /*for tablet */
+    .intro p{
+        font-size: 25px;
+    }
+    .house{
+        top:45%;
+    }
+
+    .house img{
+        width: 70%;
+    }
+
+    .sun{
+        right:-32%;
+    }
+
+    .sun img{
+        width:70%;
+    }
+
+    @keyframes slideInHouse {
+        0% {
+            right: -50%; /* Start off-screen */
+        }
+        100% {
+            right: -30%; /* Final position */
+        }
+    }
+
+    @keyframes peekSun {
+        0% {
+            top: 0%; /* Start above the container */
+            opacity: 0;
+        }
+        50% {
+            top: 8%; /* Move halfway */
+            opacity: 1;
+        }
+        100% {
+            top: 14%; /* Final position */
+            opacity: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 435px) {
+    .page-buttons {
+        display: none; /* Hide buttons on small screens */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu */
+    }
+
+    h1 {
+        font-size: 4vw;
+        margin-left: -80px;
+    }
+
+    .carousel {
+        height: 300px;
+    }
+
+    .text {
+        font-size: 7vw;
+        left: 10%;
+        top: 15%;
+    }
+
+    .prev, .next {
+        font-size: 5vw;
+        top:43%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .page-buttons {
+        display: none; /* Hide buttons on small screens */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu */
+    }
+
+    h1 {
+        font-size: 4vw;
+        margin-left: -50px;
+    }
+
+    .carousel {
+        height: 250px;
+    }
+
+    .text {
+        font-size: 7vw;
+        left: 10%;
+        top: 15%;
+    }
+
+    .prev, .next {
+        font-size: 5vw;
+        top:40%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .page-buttons {
+        display: none; /* Hide buttons on small screens */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu */
+    }
+
+    h1 {
+        font-size: 4vw;
+        margin-left: -20px;
+    }
+
+    .carousel {
+        height: 200px;
+    }
+
+    .text {
+        font-size: 6vw;
+        left: 10%;
+        top: 15%;
+    }
+
+    .prev, .next {
+        font-size: 5vw;
+        top:35%;
+    }
+}
+

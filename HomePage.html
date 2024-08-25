@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Green Light Project</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="HomePage.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    <body>
+        <header class="container">
+            <div class="logo">
+                <img src="rss/The_Green_Light_Solar_Finals_LOGO-removebg-preview.png">
+            </div>
+            <h1>The Green Light Project</h1>
+            <button class="page-buttons" id="home-button">Home</button>
+            <button class="page-buttons" id="service-button">Services</button>
+            <button class="page-buttons" id="product-button">Products</button>
+            <button class="page-buttons" id="about-button">About</button>
+            <button class="page-buttons" id="contact-button">Contact</button>
+            <button class="hamburger" aria-label="Toggle Menu" onclick="toggleMenu()">&#9776;</button>
+        </header>
+
+        <div class="carousel">
+            <div class="img-container fade">
+                <img src="rss/Join_The_Solar_Movement.jpeg">
+                <div class="text" style="left:18%;">Join The <br/>Solar Movement!</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Environmental_Benefits.jpg">
+                <div class="text" style="left:7%;">Environmental Benefits</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Lower_Energy_Bills.jpg">
+                <div class="text" style="left:23%;">Lower Energy <br/>Bills</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Long_Term_Investment.png">
+                <div class="text" style="left:23%;">Long-Term <br/>Investment</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Sustainable_Family.png">
+                <div class="text" style="left:8%;">Sustainable Family</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        
+        <div class="intro">
+            <div class="sun">
+                <img src="rss/Sun.png">
+            </div>
+            <div class="house">
+                <img src="rss/Home_With_Solar_Panel.png">
+            </div>
+            <h1>What is Solar Energy?</h1>
+            <p>Solar energy is power from the sun that can be used to
+                generate electricity. By using solar panels, we can capture
+                sunlight and turn it into energy for our homes and businesses. </p>
+        </div>
+        
+        <div class="adv">
+            <img src="rss/1.png" id="img1">
+            <img src="rss/2.png" id="img2">
+            <img src="rss/3.png" id="img3">
+            <img src="rss/4.png" id="img4">
+        </div>
+        <script src="navigation.js"></script>
+        <script>
+            let slideIndex = 0;
+            let slideInterval;
+
+            function showSlides() {
+                let slides = document.getElementsByClassName("img-container");
+                let texts = document.getElementsByClassName("text");
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.transform = `translateX(-${slideIndex * 100}%)`;
+                    texts[i].style.opacity = "0";
+                }
+
+                texts[slideIndex].style.opacity = "1";
+            }
+
+            function plusSlides(n) {
+                slideIndex += n;
+                let slides = document.getElementsByClassName("img-container");
+                if (slideIndex >= slides.length) { slideIndex = 0; }
+                if (slideIndex < 0) { slideIndex = slides.length - 1; }
+                showSlides();
+                resetInterval();
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(() => {
+                    slideIndex++;
+                    let slides = document.getElementsByClassName("img-container");
+                    if (slideIndex >= slides.length) { slideIndex = 0; }
+                    showSlides();
+                }, 3000);
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startSlideShow();
+            }
+
+            startSlideShow();
+
+            function toggleMenu() {
+            let buttons = document.querySelectorAll('.page-buttons');
+            buttons.forEach(button => {
+                button.style.display = button.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+        </script>
+    </body>
+</html>

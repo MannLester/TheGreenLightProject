@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Green Light Project</title>
+    </head>
+    <body>
+        <header class="container">
+            <div class="logo">
+                <img src="rss/The_Green_Light_Solar_Finals_LOGO-removebg-preview.png">
+            </div>
+            <h1>The Green Light Project</h1>
+            <button class="page-buttons" id="home-button">Home</button>
+            <button class="page-buttons" id="service-button">Services</button>
+            <button class="page-buttons" id="product-button">Products</button>
+            <button class="page-buttons" id="about-button">About</button>
+            <button class="page-buttons" id="contact-button">Contact</button>
+            <button class="hamburger" aria-label="Toggle Menu" onclick="toggleMenu()">&#9776;</button>
+        </header>
+
+        <div class="carousel">
+            <div class="img-container fade">
+                <img src="rss/Join_The_Solar_Movement.jpeg">
+                <div class="text" style="left:18%;">Join The <br/>Solar Movement!</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Environmental_Benefits.jpg">
+                <div class="text" style="left:7%;">Environmental Benefits</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Lower_Energy_Bills.jpg">
+                <div class="text" style="left:23%;">Lower Energy <br/>Bills</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Long_Term_Investment.png">
+                <div class="text" style="left:23%;">Long-Term <br/>Investment</div>
+            </div>
+            <div class="img-container fade">
+                <img src="rss/Sustainable_Family.png">
+                <div class="text" style="left:8%;">Sustainable Family</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        
+        <script src="navigation.js"></script>
+        <script>
+            let slideIndex = 0;
+            let slideInterval;
+
+            function showSlides() {
+                let slides = document.getElementsByClassName("img-container");
+                let texts = document.getElementsByClassName("text");
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.transform = `translateX(-${slideIndex * 100}%)`;
+                    texts[i].style.opacity = "0";
+                }
+
+                texts[slideIndex].style.opacity = "1";
+            }
+
+            function plusSlides(n) {
+                slideIndex += n;
+                let slides = document.getElementsByClassName("img-container");
+                if (slideIndex >= slides.length) { slideIndex = 0; }
+                if (slideIndex < 0) { slideIndex = slides.length - 1; }
+                showSlides();
+                resetInterval();
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(() => {
+                    slideIndex++;
+                    let slides = document.getElementsByClassName("img-container");
+                    if (slideIndex >= slides.length) { slideIndex = 0; }
+                    showSlides();
+                }, 3000);
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startSlideShow();
+            }
+
+            startSlideShow();
+
+            function toggleMenu(){
+                let buttons = document.querySelectorAll('.page-buttons');
+    buttons.forEach(button => {
+        if (button.style.display === 'block') {
+            button.style.display = 'none';
+        } else {
+            button.style.display = 'block';
+        }
+    });
+            }
+        </script>
+    </body>
+</html>
+
+<style>
+    /* Original Header Styles */
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        height: 60px;
+        background-color: #fff;
+        border-bottom: 2px solid green;
+        overflow: hidden;
+    }
+
+    .logo {
+        display: flex;
+        height: 60px;
+        width: 30px;
+    }
+
+    .logo img {
+        object-fit: cover;
+    }
+
+    h1 {
+        margin-left: -150px;
+        color: green;
+    }
+
+    .page-buttons {
+        margin-top: 23px;
+        width: 10%;
+        height: 80%;
+        border-radius: 3px;
+        border: none;
+        background-color: transparent;
+        font-size: 1vw;
+    }
+
+    .page-buttons:hover {
+        background-color: #FFD700;
+        transition: ease-in-out 3ms;
+    }
+
+    #contact-button {
+        margin-right: 0px;
+    }
+
+    #about-button {
+        margin-right: -200px;
+    }
+
+    #product-button {
+        margin-right: -200px;
+    }
+
+    #service-button {
+        margin-right: -200px;
+    }
+
+    #home-button {
+        margin-right: -200px;
+        background-color: green;
+        color: white;
+    }
+
+    /* Carousel Styles */
+
+    .carousel {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: relative;
+        white-space: nowrap;
+        margin-top: 0;
+    }
+
+    .img-container {
+        min-width: 100%;
+        height: 100%;
+        display: inline-block;
+        position: relative;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .text {
+        color: #f2f2f2;
+        text-shadow: 2px 2px 10px black;
+        font-weight: bolder;
+        font-size: 20vw;
+        padding: 8px 12px;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        display: block;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 4vw;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 0;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        color: green;
+    }
+
+    /* Media Queries for Smaller Screens */
+
+    @media screen and (max-width: 768px) {
+        .page-buttons {
+            font-size: 2vw;
+            height: 70%;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 3vw;
+        }
+
+        .carousel {
+            height: 500px;
+        }
+
+        .text {
+            font-size: 6vw;
+            left: 10%;
+            top: 12%;
+        }
+
+        .prev, .next {
+            font-size: 6vw;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        .page-buttons {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        h1 {
+            font-size: 4vw;
+        }
+
+        .carousel {
+            height: 400px;
+        }
+
+        .text {
+            font-size: 7vw;
+            left: 10%;
+            top: 15%;
+        }
+
+        .prev, .next {
+            font-size: 7vw;
+        }
+    }
+</style>

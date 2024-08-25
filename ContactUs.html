@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Green Light Project</title>
+    </head>
+    <body>
+        <header class="container">
+            <div class="logo">
+                <img src="rss/The_Green_Light_Solar_Finals_LOGO-removebg-preview.png">
+                
+            </div>
+            <h1>The Green Light Project</h1>
+            <button class="page-buttons" id="home-button">
+                Home
+            </button>
+            <button class="page-buttons" id="service-button">
+                Services
+            </button>
+            <button class="page-buttons" id="product-button">
+                Products
+            </button>
+            <button class="page-buttons" id="about-button">
+                About
+            </button>
+            <button class="page-buttons" id="contact-button">
+                Contact
+            </button>
+        </header>
+        <script src="navigation.js"></script>
+    </body>
+</html>
+
+<style>
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        height:60px;
+        background-color: #fff;
+        border-bottom: 2px solid green;
+        overflow:hidden;
+    }
+
+    .logo{
+        display:flex;
+        height:60px;
+        width:30px;
+    }
+
+    .logo img{
+        object-fit:cover;
+    }
+
+    h1{
+        margin-left: -150px;
+        color: green;
+    }
+    .page-buttons{
+        margin-top:23px;
+        width: 10%;
+        height: 80%;
+        border-radius: 3px;
+        border: none;
+        background-color: transparent;
+    }
+    
+    .page-buttons:hover{
+        background-color: #FFD700;
+        transition:ease-in-out 3ms;
+    }
+
+    #contact-button{
+        margin-right:0px;
+        background-color: green;
+        color:white;
+    }
+
+    #about-button{
+        margin-right:-200px;
+    }
+
+    #product-button{
+        margin-right:-200px;
+    }
+
+    #service-button{
+        margin-right:-200px;
+    }
+
+    #home-button{
+        margin-right:-200px;
+    }
+</style>
