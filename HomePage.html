@@ -21,7 +21,6 @@
             <button class="page-buttons" id="contact-button">Contact</button>
             <button class="hamburger" aria-label="Toggle Menu" onclick="toggleMenu()">&#9776;</button>
         </header>
-
         <div class="carousel">
             <div class="img-container fade">
                 <img src="rss/Join_The_Solar_Movement.jpeg">
@@ -66,6 +65,34 @@
             <img src="rss/3.png" id="img3">
             <img src="rss/4.png" id="img4">
         </div>
+
+        <div class="products-and-services">
+            <h1>Our Products & Services</h1>
+        </div>
+        <div class="service1">
+            <img src="rss/Solar_PV.png">
+        </div>
+        <h1 class="service1-text">Solar PV System</h1>
+        <p class="service1-content">Power systems that converts
+            sunlight into electricity by utilizing the photovoltaic effect</p>
+        <div class="service2">
+            <img src="rss/Solar_Lights.png">
+        </div>
+        <h1 class="service2-text">Solar Lights</h1>
+        <p class="service2-content">Our Solar Lights are some of our best selling
+            items, and they come fully equipped with all parts guaranteed, and 
+            ready to use right after purchase</p>
+        <div class="service3">
+            <img src="rss/Hybrid_Solar.png">
+        </div>
+        <h1 class="service3-text">Hybrid Upgrade Solar PV System</h1>
+        <p class="service3-content">Will provide power to the house during the day
+            and store the excess power in the batteries to be used at night and during
+            power outages
+        </p>
+        <footer class="footer">
+            <p>dineh</p>
+        </footer>
         <script src="navigation.js"></script>
         <script>
             let slideIndex = 0;
@@ -113,6 +140,25 @@
                 button.style.display = button.style.display === 'none' ? 'block' : 'none';
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+                const house = document.querySelector('.house');
+                const sun = document.querySelector('.sun');
+
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            house.classList.add('animate');
+                            sun.classList.add('animate');
+                        } else {
+                            house.classList.remove('animate');
+                            sun.classList.remove('animate');
+                        }
+                    });
+                });
+
+                observer.observe(document.querySelector('.intro'));
+            });
         </script>
     </body>
 </html>
