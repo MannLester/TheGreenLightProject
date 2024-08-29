@@ -90,6 +90,43 @@
             and store the excess power in the batteries to be used at night and during
             power outages
         </p>
+        <div class="cta">
+            <h3>
+                <span>Get</span> <span>Your</span> <span>First</span> <span>Purchase!</span>
+            </h3>
+            <button><span class="cart-icon"><img src="rss/Cart_Icon.png"></span>Shop Now</button>
+        </div>     
+        <h1 id="customer">Customer Review</h1>
+        <div class="review">
+            <div class="card">
+                <div class="stars">
+                    ★★★★★
+                </div>
+                <p class="review-text">No More Tipid! Solar Panels by TGLP Solar are superb!</p>
+                <div class="image-name">
+                    <img src="rss/Unknown.jpg" alt="Image">
+                    <span>Aljean Romero</span>
+                </div>
+            </div>
+        
+            <div class="card deal-card">
+                <h2>Deal Of The Day</h2>
+                <p>Join the Solar Movement!</p>
+                <button class="shop-button">SHOP NOW</button>
+            </div>
+        
+            <div class="card">
+                <div class="stars">
+                    ★★★★★
+                </div>
+                <p class="review-text">Good Job! Electricity bill lessened!</p>
+                <div class="image-name">
+                    <img src="rss/Unknown.jpg" alt="Image">
+                    <span>Mike Sendler</span>
+                </div>
+            </div>
+        </div>
+            
         <footer>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -179,6 +216,71 @@
 
                 observer.observe(document.querySelector('.intro'));
             });
+
+            function startCycle() {
+    const heading = document.querySelector('.cta h3');
+    const words = heading.querySelectorAll('span');
+
+    // Reset the heading and words
+    heading.classList.remove('exiting'); // Ensure exiting class is removed
+    words.forEach(word => {
+        word.style.opacity = '0'; // Hide words initially
+        word.style.transform = 'scale(0.5)'; // Start smaller
+        word.style.animation = 'none'; // Remove any ongoing animations
+    });
+
+    // Trigger word-by-word appearance
+    words.forEach((word, index) => {
+        setTimeout(() => {
+            word.style.animation = `appear 0.5s forwards`; // Apply appearance animation
+        }, index * 500); // Stagger appearance
+    });
+
+    // Trigger the zoom-out animation after all words have appeared
+    setTimeout(() => {
+        heading.classList.add('exiting');
+
+        // Wait for the exit animation to finish before restarting the cycle
+        setTimeout(() => {
+            // Reset styles and start the cycle again
+            heading.classList.remove('exiting');
+            words.forEach(word => {
+                word.style.opacity = '0';
+                word.style.transform = 'scale(0.5)';
+                word.style.animation = 'none'; // Remove any ongoing animations
+            });
+
+            // Restart the cycle
+            startCycle();
+        }, 1000); // Match with exit animation duration
+    }, words.length * 500 + 500); // Time after all words appear
+}
+
+startCycle(); // Start the first cycle
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.review .card');
+    let currentIndex = 0;
+
+    function rotateCards() {
+        // Reset all cards
+        cards.forEach(card => card.classList.remove('active'));
+
+        // Set the current card as active
+        cards[currentIndex].classList.add('active');
+
+        // Move to the next card
+        currentIndex = (currentIndex + 1) % cards.length;
+    }
+
+    // Initial setup
+    rotateCards();
+
+    // Rotate every 3 seconds
+    setInterval(rotateCards, 3000);
+});
+
+
         </script>
     </body>
 </html>
